@@ -21,16 +21,19 @@ Route::get('/', function () {
 Route::prefix('/admin')->group(function(){
     Route::group(['middleware' => ['auth']],function(){
 
-        // Route::get('admin/users', [App\Http\Controllers\UserController::class, 'users']);
-        // Route::match(['get','post'],'admin/add-edit-user/{id?}', [App\Http\Controllers\UserController::class, 'addEditUser']);
-        // Route::get('admin/delete-user/{id}', [App\Http\Controllers\UserController::class, 'deleteUser']);
-
         Route::get('/users', [App\Http\Controllers\UserController::class, 'index'])->name('users.index');
         Route::get('/user/create', [App\Http\Controllers\UserController::class, 'create'])->name('users.create');
         Route::post('/user', [App\Http\Controllers\UserController::class, 'store'])->name('users.store');
         Route::get('/user/{id}/edit', [App\Http\Controllers\UserController::class, 'edit'])->name('users.edit');
         Route::put('/user/{id}', [App\Http\Controllers\UserController::class, 'update'])->name('users.update');
         Route::get('delete-user/{id}', [App\Http\Controllers\UserController::class, 'destroy'])->name('users.destroy');
+
+        Route::get('/products', [App\Http\Controllers\ProductController::class, 'index'])->name('products.index');
+        Route::get('/product/create', [App\Http\Controllers\ProductController::class, 'create'])->name('products.create');
+        Route::post('/product', [App\Http\Controllers\ProductController::class, 'store'])->name('products.store');
+        Route::get('/product/{id}/edit', [App\Http\Controllers\ProductController::class, 'edit'])->name('products.edit');
+        Route::put('/product/{id}', [App\Http\Controllers\ProductController::class, 'update'])->name('products.update');
+        Route::get('delete-product/{id}', [App\Http\Controllers\ProductController::class, 'destroy'])->name('products.destroy');
 
     });
 });

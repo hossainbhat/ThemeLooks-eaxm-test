@@ -33,11 +33,11 @@
                                 </div>
                                 <div class="col-md-6">
                                     <label for="city" class="form-label">City</label>
-                                    <input type="city" name="city" class="form-control" id="city" required=""  placeholder="Enter city" >
+                                    <input type="text" name="city" class="form-control" id="city" required=""  placeholder="Enter city" >
                                 </div>
                                 <div class="col-md-6">
                                     <label for="country" class="form-label">Country</label>
-                                    <input type="country" name="country" class="form-control" id="country" required=""  placeholder="Enter country">
+                                    <input type="text" name="country" class="form-control" id="country" required=""  placeholder="Enter country">
                                 </div>
                                 <div class="col-md-6">
                                     <label for="password" class="form-label">Password</label>

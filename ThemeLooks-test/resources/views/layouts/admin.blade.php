@@ -83,9 +83,9 @@
 						<div class="menu-title">Product</div>
 					</a>
 					<ul>
-						<li> <a href="app-emailbox.html"><i class="bx bx-right-arrow-alt"></i>Add Product</a>
+						<li> <a href="{{route('products.create')}}"><i class="bx bx-right-arrow-alt"></i>Add Product</a>
 						</li>
-						<li> <a href="app-chat-box.html"><i class="bx bx-right-arrow-alt"></i>Product List</a>
+						<li> <a href="{{route('products.index')}}"><i class="bx bx-right-arrow-alt"></i>Product List</a>
 						</li>
 					</ul>
 				</li>

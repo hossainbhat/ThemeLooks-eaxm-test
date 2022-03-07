@@ -88,6 +88,6 @@ class UserController extends Controller
     public function destroy($id){
          
         User::where('id',$id)->delete();
-        return redirect()->back()->with("success_message","Banner has been deleted Successfully!");
+        return redirect()->back()->with("success_message","User has been deleted Successfully!");
     }
 }
