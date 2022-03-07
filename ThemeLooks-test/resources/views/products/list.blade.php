@@ -34,16 +34,15 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    
+                                    @if(count($products) > 0)
                                     @foreach ($products as $key => $product)
                                     <tr>
                                             <td>{{ $key+1 }}</td>
-                                            <td>{{ $product->name }}</td>
-                                            <td>{{ $product->gender }}</td>
+                                            <td>{{ ucfirst($product->name) }}</td>
+                                            <td>{{ ucfirst($product->gender) }}</td>
                                             <td>{{ $product->color }}</td>
                                             <td>{{ $product->size }}</td>
                                             <td>{{ $product->price }}</td>
-                                            
                                             <td>
                                             
                                                 <a href="{{route('products.edit',$product->id)}}"><i class="btn btn-outline-success btn-sm fadeIn animated bx bx-comment-edit"></i></a>
@@ -54,6 +53,7 @@
                                             </td>
                                         </tr>
                                     @endforeach
+                                    @endif 
                                 </tbody>
                         
                             </table>

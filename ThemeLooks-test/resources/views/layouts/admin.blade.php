@@ -70,7 +70,7 @@
 						<div class="menu-title">User</div>
 					</a>
 					<ul>
-						<li> <a href="#"><i class="bx bx-right-arrow-alt"></i>User Registation</a>
+						<li> <a href="{{route('users.create')}}"><i class="bx bx-right-arrow-alt"></i>User Registation</a>
 						</li>
 						<li> <a href="{{route('users.index')}}"><i class="bx bx-right-arrow-alt"></i>User List</a>
 						</li>

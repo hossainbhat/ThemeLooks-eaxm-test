@@ -9,7 +9,7 @@ use Session;
 class UserController extends Controller
 {
     public function index(){
-        $users = User::get();
+        $users = User::orderBy('id','desc')->get();
         return view("users.list",compact('users'));
     }
 
@@ -39,8 +39,7 @@ class UserController extends Controller
         $user->password = bcrypt($request->password);
         $user->save();
 
-        session()->flash('success', 'Registation has been Successfull !');
-        return redirect()->route('users.index');
+        return redirect()->route('users.index')->with("success_message","Registation has been Successfull !");
     }
 
     public function edit($id){
@@ -53,7 +52,6 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         
-           // Create New Admin
            $user = User::find($id);
 
            // Validation Data
@@ -79,10 +77,8 @@ class UserController extends Controller
                 $user->password = bcrypt($request->password);
             }
             $user->save();
-   
-           session()->flash('success', 'User has been updated !!');
-               
-           return redirect('admin/users');
+
+           return redirect('admin/users')->with("success_message","User has been updated !");
     }
 
     public function destroy($id){

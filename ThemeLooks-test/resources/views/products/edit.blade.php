@@ -15,7 +15,15 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="p-4 border rounded">
-                           
+                            @if ($errors->any())
+                            <div class="alert alert-danger" style="margin-top: 10px;">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                                </div>
+                            @endif
                             <form class="row g-3 needs-validation" action="{{route('products.update',$product->id)}}" method="post">
                                 @csrf
                                 @method('PUT')

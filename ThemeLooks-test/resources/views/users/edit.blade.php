@@ -8,14 +8,22 @@
         <!--end breadcrumb-->
         <div class="row">
             <div class="col-xl-9 mx-auto">
-                <h6 class="mb-0 text-uppercase">User Registation</h6>
+                <h6 class="mb-0 text-uppercase">Edit User Registation</h6>
                 <a style="float: right; margin-top: -30px;" href="{{route('users.index')}}"><button type="button" class="btn btn-outline-success btn-sm">User List<i class="fadeIn animated bx bx-list-ol"></i></button></a>
 
                 <hr>
                 <div class="card">
                     <div class="card-body">
                         <div class="p-4 border rounded">
-                           
+                            @if ($errors->any())
+                            <div class="alert alert-danger" style="margin-top: 10px;">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                                </div>
+                            @endif
                             <form class="row g-3 needs-validation" action="{{route('users.update',$user->id)}}" method="post">
                                 @csrf
                                 @method('PUT')
@@ -34,11 +42,11 @@
                                 </div>
                                 <div class="col-md-6">
                                     <label for="city" class="form-label">City</label>
-                                    <input type="city" name="city" class="form-control" id="city" required=""  placeholder="Enter city" value="{{$user->city}}">
+                                    <input type="city" name="city" class="form-control" id="city"  placeholder="Enter city" value="{{$user->city}}">
                                 </div>
                                 <div class="col-md-6">
                                     <label for="country" class="form-label">Country</label>
-                                    <input type="country" name="country" class="form-control" id="country" required=""  placeholder="Enter country" value="{{$user->country}}">
+                                    <input type="country" name="country" class="form-control" id="country"  placeholder="Enter country" value="{{$user->country}}">
                                 </div>
                                 <div class="col-md-6">
                                     <label for="password" class="form-label">Password</label>

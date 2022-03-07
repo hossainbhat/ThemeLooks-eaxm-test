@@ -4,7 +4,7 @@
 <div class="page-wrapper">
     <div class="page-content">
        
-        <h6 class="mb-0 text-uppercase">User Role</h6>
+        <h6 class="mb-0 text-uppercase">User List</h6>
         <a style="float: right; margin-top: -30px;" href="{{route('users.create')}}"><button type="button" class="btn btn-outline-success btn-sm">Register User <i class="lni lni-circle-plus"></i></button></a>
         <hr>
         <div class="card">
@@ -35,15 +35,15 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    
+                                    @if(count($users) > 0)
                                     @foreach ($users as $key => $user)
                                     <tr>
                                             <td>{{ $key+1 }}</td>
-                                            <td>{{ $user->name }}</td>
+                                            <td>{{ ucfirst($user->name) }}</td>
                                             <td>{{ $user->email }}</td>
-                                            <td>{{ $user->birth_date }}</td>
-                                            <td>{{ $user->city }}</td>
-                                            <td>{{ $user->country }}</td>
+                                            <td>{{  $user->birth_date?\Carbon\Carbon::parse($user->birth_date)->format('d-M-Y'):'' }}</td>
+                                            <td>{{ ucfirst($user->city) }}</td>
+                                            <td>{{ ucfirst($user->country) }}</td>
                                             <td>
                                                 @if($user['status'] =='Active')
                                                     Active 
@@ -61,6 +61,7 @@
                                             </td>
                                         </tr>
                                     @endforeach
+                                    @endif 
                                 </tbody>
                         
                             </table>

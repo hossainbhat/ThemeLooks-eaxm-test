@@ -15,7 +15,16 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="p-4 border rounded">
-                           
+                            
+                          @if ($errors->any())
+                            <div class="alert alert-danger" style="margin-top: 10px;">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                                </div>
+                            @endif
                             <form class="row g-3 needs-validation" action="{{route('users.store')}}" method="post">
                                 @csrf
                                 <div class="col-md-6">
@@ -33,11 +42,11 @@
                                 </div>
                                 <div class="col-md-6">
                                     <label for="city" class="form-label">City</label>
-                                    <input type="text" name="city" class="form-control" id="city" required=""  placeholder="Enter city" >
+                                    <input type="text" name="city" class="form-control" id="city"  placeholder="Enter city" >
                                 </div>
                                 <div class="col-md-6">
                                     <label for="country" class="form-label">Country</label>
-                                    <input type="text" name="country" class="form-control" id="country" required=""  placeholder="Enter country">
+                                    <input type="text" name="country" class="form-control" id="country"  placeholder="Enter country">
                                 </div>
                                 <div class="col-md-6">
                                     <label for="password" class="form-label">Password</label>

@@ -8,7 +8,7 @@ use App\Models\Product;;
 class ProductController extends Controller
 {
     public function index(){
-        $products = Product::get();
+        $products = Product::orderBy('id','desc')->get();
         return view("products.list",compact('products'));
     }
 
@@ -33,8 +33,7 @@ class ProductController extends Controller
         $product->price = $request->price;
         $product->save();
 
-        session()->flash('success', 'Product has been Successfull !');
-        return redirect()->route('products.index');
+        return redirect()->route('products.index')->with("success_message","Product has been Successfull!");
     }
 
     public function edit($id){
@@ -66,10 +65,8 @@ class ProductController extends Controller
             $product->price = $request->price;
             
             $product->save();
-   
-           session()->flash('success', 'Product has been updated !!');
                
-           return redirect('admin/products');
+           return redirect('admin/products')->with("success_message","Product has been updated !");
     }
     public function destroy($id){
          

@@ -20,14 +20,14 @@ Route::get('/', function () {
 
 Route::prefix('/admin')->group(function(){
     Route::group(['middleware' => ['auth']],function(){
-
+        //user
         Route::get('/users', [App\Http\Controllers\UserController::class, 'index'])->name('users.index');
         Route::get('/user/create', [App\Http\Controllers\UserController::class, 'create'])->name('users.create');
         Route::post('/user', [App\Http\Controllers\UserController::class, 'store'])->name('users.store');
         Route::get('/user/{id}/edit', [App\Http\Controllers\UserController::class, 'edit'])->name('users.edit');
         Route::put('/user/{id}', [App\Http\Controllers\UserController::class, 'update'])->name('users.update');
         Route::get('delete-user/{id}', [App\Http\Controllers\UserController::class, 'destroy'])->name('users.destroy');
-
+        //product
         Route::get('/products', [App\Http\Controllers\ProductController::class, 'index'])->name('products.index');
         Route::get('/product/create', [App\Http\Controllers\ProductController::class, 'create'])->name('products.create');
         Route::post('/product', [App\Http\Controllers\ProductController::class, 'store'])->name('products.store');
@@ -37,6 +37,6 @@ Route::prefix('/admin')->group(function(){
 
     });
 });
-Auth::routes();
+Auth::routes(['register' => false]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
