@@ -38,10 +38,8 @@
                                             <td>
                                             
                                                 <a href="{{route('products.attribute',$product->id)}}" title="Product Attribute"><i class="btn btn-outline-warning btn-sm fadeIn animated bx bx-comment-edit"></i></a>
-                                                <a href="{{route('products.edit',$product->id)}}"><i class="btn btn-outline-success btn-sm fadeIn animated bx bx-comment-edit"></i></a>
-                                            
-                                            
-                                                <a class="confirmDelete" record="product" recoedid="{{$product->id}}" href="javascript:void('0')"><i class="btn btn-outline-danger btn-sm fadeIn animated bx bx-trash-alt"></i></a>
+                                                <a href="{{route('products.edit',$product->id)}}" title="Edit product"><i class="btn btn-outline-success btn-sm fadeIn animated bx bx-comment-edit"></i></a>
+                                                <a title="Delete Product" class="confirmDelete" record="product" recoedid="{{$product->id}}" href="javascript:void('0')"><i class="btn btn-outline-danger btn-sm fadeIn animated bx bx-trash-alt"></i></a>
                                             
                                             </td>
                                         </tr>

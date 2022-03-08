@@ -64,7 +64,7 @@ class ProductController extends Controller
     public function attribute($id){
 
         $product = Product::find($id);
-        $attributes = ProductAttribute::orderBy('id','DESC')->get();
+        $attributes = ProductAttribute::where('product_id',$id)->orderBy('id','DESC')->get();
         return view("products.attribute",compact('product','attributes'));
 
     }
