@@ -24,13 +24,9 @@
                             <table id="example" class="table table-striped table-bordered dataTable" role="grid" aria-describedby="example2_info">
                                 <thead>
                                     <tr role="row">
-                                        <th>Sl</th>
+                                        <th width="10%">Sl</th>
                                         <th>Name</th>
-                                        <th>Gender</th>
-                                        <th>Color</th>
-                                        <th>Size</th>
-                                        <th>Price</th>
-                                        <th width="12%">Action</th>         
+                                        <th width="15%">Action</th>         
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -39,12 +35,9 @@
                                     <tr>
                                             <td>{{ $key+1 }}</td>
                                             <td>{{ ucfirst($product->name) }}</td>
-                                            <td>{{ ucfirst($product->gender) }}</td>
-                                            <td>{{ $product->color }}</td>
-                                            <td>{{ $product->size }}</td>
-                                            <td>{{ $product->price }}</td>
                                             <td>
                                             
+                                                <a href="{{route('products.attribute',$product->id)}}" title="Product Attribute"><i class="btn btn-outline-warning btn-sm fadeIn animated bx bx-comment-edit"></i></a>
                                                 <a href="{{route('products.edit',$product->id)}}"><i class="btn btn-outline-success btn-sm fadeIn animated bx bx-comment-edit"></i></a>
                                             
                                             

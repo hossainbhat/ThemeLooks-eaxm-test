@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 07, 2022 at 08:44 AM
+-- Generation Time: Mar 08, 2022 at 06:16 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -58,7 +58,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (2, '2014_10_12_100000_create_password_resets_table', 1),
 (3, '2019_08_19_000000_create_failed_jobs_table', 1),
 (4, '2019_12_14_000001_create_personal_access_tokens_table', 1),
-(5, '2022_03_06_055115_create_products_table', 2);
+(5, '2022_03_06_055115_create_products_table', 1),
+(6, '2022_03_08_042242_create_product_attributes_table', 1);
 
 -- --------------------------------------------------------
 
@@ -71,13 +72,6 @@ CREATE TABLE `password_resets` (
   `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `password_resets`
---
-
-INSERT INTO `password_resets` (`email`, `token`, `created_at`) VALUES
-('admin@gmail.com', '$2y$10$NP./Cpmr/mDEkY8Lf5t5U.WzrkV468Na9VB8K91jGQOcQOfHCscom', '2022-03-07 01:38:11');
 
 -- --------------------------------------------------------
 
@@ -106,10 +100,6 @@ CREATE TABLE `personal_access_tokens` (
 CREATE TABLE `products` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `gender` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `color` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `size` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `price` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -118,10 +108,33 @@ CREATE TABLE `products` (
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`id`, `name`, `gender`, `color`, `size`, `price`, `created_at`, `updated_at`) VALUES
-(2, 'Jins Pant', 'Femail', 'Black', 'M', '700', '2022-03-07 00:01:18', '2022-03-07 00:35:21'),
-(5, 'driver', NULL, 'White', '12 Inc', '200', '2022-03-07 00:32:41', '2022-03-07 00:32:41'),
-(6, 'Screw Driver', NULL, 'Black', '10 Inc', '100', '2022-03-07 00:34:36', '2022-03-07 00:34:36');
+INSERT INTO `products` (`id`, `name`, `created_at`, `updated_at`) VALUES
+(1, 'Pant', '2022-03-07 22:28:40', '2022-03-07 22:28:40');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `product_attributes`
+--
+
+CREATE TABLE `product_attributes` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `product_id` int(10) UNSIGNED DEFAULT NULL,
+  `gender` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `color` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `size` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `price` int(11) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `product_attributes`
+--
+
+INSERT INTO `product_attributes` (`id`, `product_id`, `gender`, `color`, `size`, `price`, `created_at`, `updated_at`) VALUES
+(5, 1, 'Mail', 'white', 'M', 200, '2022-03-07 23:09:13', '2022-03-07 23:09:13'),
+(6, 1, 'Mail', 'white', 'L', 220, '2022-03-07 23:09:13', '2022-03-07 23:09:13');
 
 -- --------------------------------------------------------
 
@@ -138,7 +151,7 @@ CREATE TABLE `users` (
   `birth_date` date DEFAULT NULL,
   `city` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `country` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Active',
+  `status` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT 'Active',
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -149,11 +162,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `birth_date`, `city`, `country`, `status`, `remember_token`, `created_at`, `updated_at`) VALUES
-(2, 'admin', 'admin@gmail.com', NULL, '$2y$10$B/69gpEiDjqiUTEANcHcwe/5hjMKvVNSsbLIWpRql79RHVmdrJNG6', '1995-01-25', 'Dhaka', 'Bangladesh', 'InActive', NULL, '2022-03-06 04:44:28', '2022-03-06 23:12:00'),
-(3, 'kamal khan', 'kamal@gmail.com', NULL, '$2y$10$xt1cfNIwuhvk3bcyzOEkvOdr90nOQWPsiFRMt1fkeA8KfRnsGPpx2', '2022-03-25', 'Dhaka', 'Bangladesh', 'Active', NULL, '2022-03-06 04:48:27', '2022-03-06 04:48:27'),
-(4, 'robin', 'robin@gmail.com', NULL, '$2y$10$YiBqQ9P6FEaD54nTAmb.wOrGiBA7RF.b6PGp7aiHKTcghN1f3GujC', '2022-03-06', 'Ghoraght', 'Bangladesh', 'Active', NULL, '2022-03-06 05:11:46', '2022-03-06 05:11:46'),
-(5, 'kobir', 'kobir@gmail.com', NULL, '$2y$10$o9RUXO4RViB5iw43fCxyhuyZZ.dZEuYbswAjkov2O2C0H56/l8zma', '2022-03-06', 'Dhaka', 'admin@gmail.com', 'InActive', NULL, '2022-03-06 05:14:49', '2022-03-06 23:22:43'),
-(7, 'billal hossain', 'billal@gmail.com', NULL, '$2y$10$NWB041xVj.Wd1gL4Cd9PUe//6wUfjKjGms8ekva4HIHjujqlLga82', '2022-03-23', 'Dhaka', 'Bangladesh', 'Active', NULL, '2022-03-07 01:41:12', '2022-03-07 01:41:12');
+(1, 'admin', 'admin@gmail.com', NULL, '$2y$10$JqssWXswtPn9w6o0jaDTi.21Km9gkXDNWnhgYs.6nBRJgFiN8SKaO', '1995-01-25', 'Chandpur', 'Bangladesh', 'Active', NULL, '2022-03-07 22:26:06', '2022-03-07 22:28:08');
 
 --
 -- Indexes for dumped tables
@@ -193,6 +202,12 @@ ALTER TABLE `products`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `product_attributes`
+--
+ALTER TABLE `product_attributes`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -213,7 +228,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -225,13 +240,19 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `product_attributes`
+--
+ALTER TABLE `product_attributes`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

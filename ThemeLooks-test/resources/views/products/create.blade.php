@@ -32,23 +32,6 @@
                                     <input type="text" name="name" class="form-control" id="name" placeholder="Enter Name">
                                 </div>
                                 
-                                <div class="col-md-6">
-                                    <label for="gender" class="form-label">Gender</label>
-                                    <input type="text" name="gender" class="form-control" id="gender"  placeholder="Enter gender" >
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="color" class="form-label">Color</label>
-                                    <input type="text" name="color" class="form-control" id="color" >
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="size" class="form-label">size</label>
-                                    <input type="text" name="size" class="form-control" id="size" placeholder="Enter size" >
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="price" class="form-label">Price</label>
-                                    <input type="text" name="price" class="form-control" id="price" placeholder="Enter price">
-                                </div>
-                               
                                 <div class="col-12">
                                     <button class="btn btn-outline-success" type="submit">Create</button>
                                 </div>

@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
             $table->date('birth_date')->nullable();
             $table->string('city')->nullable();
             $table->string('country')->nullable();
-            $table->tinyInteger('status')->nullable();
+            $table->string('status')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

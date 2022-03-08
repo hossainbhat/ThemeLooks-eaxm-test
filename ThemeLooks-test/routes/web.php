@@ -34,9 +34,14 @@ Route::prefix('/admin')->group(function(){
         Route::get('/product/{id}/edit', [App\Http\Controllers\ProductController::class, 'edit'])->name('products.edit');
         Route::put('/product/{id}', [App\Http\Controllers\ProductController::class, 'update'])->name('products.update');
         Route::get('delete-product/{id}', [App\Http\Controllers\ProductController::class, 'destroy'])->name('products.destroy');
+        Route::get('/product/{id}/attribute', [App\Http\Controllers\ProductController::class, 'attribute'])->name('products.attribute');
+        Route::match(['get','post'],'/add-edit-product-attribute/{id?}', [App\Http\Controllers\ProductController::class, 'addProductAttribute'])->name('products.add.attribute');
+        Route::get('/delete-attribute/{id}', [App\Http\Controllers\ProductController::class, 'deleteAttribute'])->name('products.delete.attribute');
+
 
     });
 });
-Auth::routes(['register' => false]);
+Auth::routes();
+// Auth::routes(['register' => false]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
