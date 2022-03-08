@@ -26,7 +26,7 @@
                                     <tr role="row">
                                         <th width="10%">Sl</th>
                                         <th>Name</th>
-                                        <th width="15%">Action</th>         
+                                        <th width="20%">Action</th>         
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -36,9 +36,10 @@
                                             <td>{{ $key+1 }}</td>
                                             <td>{{ ucfirst($product->name) }}</td>
                                             <td>
-                                            
-                                                <a href="{{route('products.attribute',$product->id)}}" title="Product Attribute"><i class="btn btn-outline-warning btn-sm fadeIn animated bx bx-comment-edit"></i></a>
-                                                <a href="{{route('products.edit',$product->id)}}" title="Edit product"><i class="btn btn-outline-success btn-sm fadeIn animated bx bx-comment-edit"></i></a>
+                                                
+                                                <a href="{{route('products.view',$product->id)}}" title="Product Information"><i class="btn btn-outline-info btn-md lni lni-eye"></i></i></a>
+                                                <a href="{{route('products.attribute',$product->id)}}" title="Product Attribute"><i class="btn btn-outline-warning btn-sm animated bx bx-comment-edit"></i></a>
+                                                <a href="{{route('products.edit',$product->id)}}" title="Edit product"><i class="btn btn-outline-success btn-sm animated bx bx-comment-edit"></i></a>
                                                 <a title="Delete Product" class="confirmDelete" record="product" recoedid="{{$product->id}}" href="javascript:void('0')"><i class="btn btn-outline-danger btn-sm fadeIn animated bx bx-trash-alt"></i></a>
                                             
                                             </td>

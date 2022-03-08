@@ -60,6 +60,12 @@ class ProductController extends Controller
         return redirect()->back()->with("success_message","Product has been deleted Successfully!");
     }
 
+    public function productView($id){
+        $product = Product::find($id);
+        $attributes = ProductAttribute::where('product_id',$id)->get();
+        // dd($attributes);
+        return view("products.view",compact('attributes','product'));
+    }
 
     public function attribute($id){
 
